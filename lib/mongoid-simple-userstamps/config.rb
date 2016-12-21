@@ -4,23 +4,20 @@
 module Mongoid
   module Userstamps
     module Config
-      @@model = nil
-      @@current = nil
-
       def self.current
-        @@current
+        RequestStore.store[:msu_current]
       end
 
       def self.model
-        @@model
+        RequestStore.store[:msu_user_class]
       end
 
       def self.set_current(current)
-        @@current = current
+        RequestStore.store[:msu_current] = current
       end
 
       def self.set_model(user_class)
-        @@user_class = user_class
+        RequestStore.store[:msu_user_class] = user_class
       end
     end
   end
